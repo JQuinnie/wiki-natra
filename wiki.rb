@@ -1,6 +1,7 @@
-require 'sinatra'
+require "sinatra"
+require "uri"
 
-set :bind, '0.0.0.0'
+set :bind, "0.0.0.0"
 
 # method to load text files
 def page_content(title)
@@ -16,25 +17,26 @@ def save_content(title, content)
   end
 end
 
-get '/' do
+get "/" do
   # insert erb template of file welcome.erb
   erb :welcome
 end
 
-get '/new' do
+get "/new" do
   erb :new
 end
 
 # using URL parameters to create a single route that will match any page users might attempt to visit
-get '/:title' do
+get "/:title" do
   @title = params[:title]
   @content = page_content(@title)
   erb :show
 end
 
 # {"title" => "my title", "content" => "my content"}
-post '/create' do
-  save_content(params['title'], params['content'])
+post "/create" do
+  save_content(params["title"], params["content"])
   # after successful save, it will redirect to path specified
-  redirect "/#{params['title']}"
+  # CGI::espape replaced URI.escape to encode spaces in route
+  redirect URI.escape("/#{params["title"]}")
 end
