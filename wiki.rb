@@ -31,3 +31,10 @@ get '/:title' do
   @content = page_content(@title)
   erb :show
 end
+
+# {"title" => "my title", "content" => "my content"}
+post '/create' do
+  save_content(params['title'], params['content'])
+  # after successful save, it will redirect to path specified
+  redirect "/#{params['title']}"
+end
