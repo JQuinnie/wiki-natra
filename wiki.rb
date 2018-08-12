@@ -9,6 +9,13 @@ rescue Errno::ENOENT
   return nil
 end
 
+# method to save content to text file
+def save_content(title, content)
+  File.open("pages/#{title}.txt", "w") do |file|
+    file.print(content)
+  end
+end
+
 get '/' do
   # insert erb template of file welcome.erb
   erb :welcome
