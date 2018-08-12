@@ -14,6 +14,7 @@ get '/' do
   erb :welcome
 end
 
+# using URL parameters to create a single route that will match any page users might attempt to visit
 get '/:title' do
   page_content(params[:title])
 end
