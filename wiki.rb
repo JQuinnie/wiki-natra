@@ -21,6 +21,10 @@ get '/' do
   erb :welcome
 end
 
+get '/new' do
+  erb :new
+end
+
 # using URL parameters to create a single route that will match any page users might attempt to visit
 get '/:title' do
   @title = params[:title]
