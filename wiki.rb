@@ -34,7 +34,7 @@ get "/:title" do
 end
 
 # using URL parameter of the title to allow an edit route
-get '/:title/edit' do
+get "/:title/edit" do
   @title = params[:title]
   @content = page_content(@title)
   erb :edit
@@ -45,5 +45,11 @@ post "/create" do
   save_content(params["title"], params["content"])
   # after successful save, it will redirect to path specified
   # CGI::espape replaced URI.escape to encode spaces in route
+  redirect URI.escape("/#{params["title"]}")
+end
+
+# put request for modifying an existing resource on the server
+put "/:title" do
+  save_content(params["title"], params["content"])
   redirect URI.escape("/#{params["title"]}")
 end
