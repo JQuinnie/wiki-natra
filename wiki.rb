@@ -33,6 +33,13 @@ get "/:title" do
   erb :show
 end
 
+# using URL parameter of the title to allow an edit route
+get '/:title/edit' do
+  @title = params[:title]
+  @content = page_content(@title)
+  erb :edit
+end
+
 # {"title" => "my title", "content" => "my content"}
 post "/create" do
   save_content(params["title"], params["content"])
