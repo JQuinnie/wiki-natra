@@ -1,7 +1,9 @@
 <h1>Edit Page: <%= @title %></h1>
 
 <div>
-  <form>
+  <form method="POST" action="/<%= @title %>">
+  <%# Add a hidden input to specify method as PUT, HTML methods only allow GET and POST, but Sinatra can use PUT %>
+  <input type="hidden" name="_method" value="put">
     <fieldset>
       <label for="content">Content:</label>
       <textarea rows="10" columns="50" name="content" id="content"><%= @content %></textarea>
