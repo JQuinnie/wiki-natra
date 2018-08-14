@@ -17,6 +17,11 @@ def save_content(title, content)
   end
 end
 
+# method to delete text file from pages
+def delete_content(title)
+  File.delete("pages/#{title}.txt")
+end
+
 get "/" do
   # insert erb template of file welcome.erb
   erb :welcome
@@ -52,4 +57,10 @@ end
 put "/:title" do
   save_content(params["title"], params["content"])
   redirect URI.escape("/#{params["title"]}")
+end
+
+# linking delete route
+delete "/:title" do
+  delete_content(params[:title])
+  redirect "/"
 end
