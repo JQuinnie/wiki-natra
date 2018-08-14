@@ -29,6 +29,8 @@ end
 
 get "/new" do
   erb :new
+  # if need to use a different layout specification, call as below
+  # erb :new, layout: :page
 end
 
 # using URL parameters to create a single route that will match any page users might attempt to visit
