@@ -3,6 +3,11 @@ require "uri"
 
 set :bind, "0.0.0.0"
 
+# for security purpose, add method to escape any HTML that might appear as a string in page's content
+def h(string)
+  Rack::Utils.escape_html(string)
+end
+
 # method to load text files
 def page_content(title)
   File.read("pages/#{title}.txt")
