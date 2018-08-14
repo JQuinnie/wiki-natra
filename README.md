@@ -27,3 +27,9 @@ Please note that this app still needs to be deployed, currently you can run it o
 - Sinatra
 - Embedded Ruby (ERB) Templating
 - HTML/CSS
+
+## Future Improvements
+
+- Make it a full Web App
+  - Deploy online
+  - Persist data
