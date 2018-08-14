@@ -4,4 +4,8 @@
 
 <div>
   <a href="/<%= @title %>/edit">Edit This Page</a>
+  <form method="POST" action="/<%= @title %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete This Page">
+  </form>
 </div>
